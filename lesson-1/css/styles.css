@@ -1,44 +1,188 @@
 @charset "UTF-8";
 
-/* STEP 1: Named Selector
-------------------------------------------------------- */
+/* 
+!important
+    forces a declaration to override any other declarations, regardless of specificity or source order
+    should be used very sparingly, as it makes debugging more difficult
+    ex. wanna make sure a paragraph is always red, no matter what other styles are applied?
+    p {
+        color: red !important;
+    }
+*/
 
+/* STEP 1: Named Selector
+indescriminately target all elements of a given type
+    h1
+------------------------------------------------------- */
+/* rule */
+h2 /* selector */
+{ /* ruleset */
+    /* declaration */
+    color: /* property */ 
+    red; /* value */
+    font-weight: lighter;
+}
 
 /* STEP 2: ID Selector
+any element with a specific id attribute id="idName"
+only one element per id per page
+    #idName
 ------------------------------------------------------- */
-
+#special {
+    color: blue;
+    font-style: italic;
+}
 
 /* STEP 3: Class Selector
+any element with a specific class attribute ex. class="error"
+multiple elements can share the same class
+    .error
+targets only label elements with class="error"
+    label.error
 ------------------------------------------------------- */
-
+.project{
+    background-color: rgb(206, 206, 206);
+}
+.about{
+    border: 4px dashed black;
+}
 
 /* STEP 4: Contextual/Descendent Selector
+any element that is a descendent of a specific parent element
+    section h1
 ------------------------------------------------------- */
-
+section p {
+    color:navy;
+}
+.about p a{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 
 /* STEP 5: Grouped Selector
+apply the same styles to multiple different elements
+    h1, h2, h3
 ------------------------------------------------------- */
-
+h1, h2, h3 {
+    text-align: center;
+    text-transform: uppercase;
+}
 
 /* STEP 6: Pseudo-Class Selector
+pseudo-classes target elements in a specific state
+    a:link - unvisited link
+    a:visited - visited link
+    a:hover - mouse over link
+    a:active - selected link
+    a:focus - focused link
 ------------------------------------------------------- */
-
+a:link{
+    text-decoration: none;
+    color:crimson;
+}
+a:hover{
+    text-decoration: underline;
+    font-size: xx-large;
+}
+a:focus{
+    outline: 2px solid orange;
+}
+a:visited{
+    color: purple;
+}
+a:active{
+    color: green;
+}
 
 /* STEP 7: Structural Pseudo-Class Selector
+targets elements based on their position in the document structure
+    li:first-child
+    li:last-child
+    li:nth-child(odd)
+    li:nth-child(even)
+        ex. wanna grab 4th list item?
+        li:nth-child(4)
+        ex. wanna grab every 3rd list item?
+        li:nth-child(3n)
+        ex. wanna grab every 4th list item starting from the 5th?
+        li:nth-child(4n+1)
+    nth-of-type 
+        works the same way but only counts elements of the same type
+        p:next-of-type(3)
+        the third element of p in a set of elements
+    p:first-of-type
+    p:last-of-type
+        targets the first child or last child of its type within its parent
+    td:empty
+        targets elements that have no children (including text nodes)
+    *not
+    targets elements that do not match a list of selectors
+        ex. wanna target every list item that does not have class="active"?
+        li:not(.active)
 ------------------------------------------------------- */
-
+li:nth-child(2){
+    background-color: tomato;
+}
+li:nth-child(2n){
+    background-color: orange;
+}
 
 /* STEP 8: Pseudo-Element Selector
+used to style specific parts of an element
+    p::first-letter
+    p::first-line
+    p::before
+    p::after
+        h1::after {
+            content: " ★";
+        }
 ------------------------------------------------------- */
-
+li::first-letter{
+    font-size: 200%;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+}
+li::first-line{
+    font-weight: bold;
+}
 
 /* STEP 9: Combinator Selector
+child combinator (>)
+    targets only direct children of a specified element
+        ex. wanna target only li elements that are direct children of ul elements?
+        ul > li
+adjacent sibling combinator (+)
+    targets an element that is immediately preceded by a specified element
+        ex. wanna target every h2 element that directly follows an h1 element?
+        h1 + h2
+general sibling combinator (~)
+    targets all elements that are preceded by a specified element
+        ex. wanna target every h2 element that follows an h1 element?
+        h1 ~ h2
 ------------------------------------------------------- */
+h1 + p{
+    color: green;
+    font-size: x-large;
+}
 
 
 /* STEP 10: Attribute Selector
+attribute presence selector ([attribute])
+    targets elements that have a specific attribute
+        ex. wanna target every input element that has an "href" attribute?
+        input[href]
+attribute value selector ([attribute="value"])
+    targets elements with a specific attribute and value
+        ex. wanna target every input element with type="text"?
+        input[type="text"]
 ------------------------------------------------------- */
+*[lang="es"]{
+    background-color: red;
+    font-weight: bold;
+}]
 
-
-/* STEP 11: Getting Crazy
+/* STEP 11: Getting Crazy >:3
 ------------------------------------------------------- */
+.project .about p:first-of-type::first-line {
+    text-decoration: underline;
+    font-size: large;
+}
