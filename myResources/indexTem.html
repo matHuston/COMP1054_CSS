@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <!--set width for devices like mobile-->
+        <meta name="viewport" content="width=device-width" />
+        <title> | </title>
+        <!--author & desc metadata-->
+        <meta name="author" content=" " />
+        <meta name="description" content=" " />
+        <!--icon for browser tabs-->
+        <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+
+        <!--attach stylesheet-->
+        <link rel="stylesheet" href="css/stylesTem.css">
+        <!-- or you can use @import inside a style element like below -->
+        <style>   
+            @import url("css/stylesTem.css");
+        </style>
+         <!-- you can use locally embedded style sheets like this to manually override external styles for specific pages -- this page still uses above stylesheet, but certain elements are different on this page, OVERIDES INHERITANCE FROM BODY STYLE -->
+		<style>
+			h4 {
+				color: hotpink;
+			}
+		</style>
+        <!-- styles can also be appline inline, but this is bad practice. will take precidence over other stylesheets and locally embeded styles -->
+        <h1 style="color:lime">blah blah</h1>
+
+    </head>
+
+    <!--GLOBAL ATTRIBUTES - can be placed inside opening tags to add extra info!
+
+    id=""
+    class=""
+    lang=""
+
+    -->
+    <body>
+        <h1>Primary</h1> <!--primary-->
+        <h2>Secondary</h2> <!--subheading-->
+        <h3>Tertiary</h3> <!--tertiary-->
+        <h4>Four</h4>
+        <h5>Five</h5>
+        <h6>Six</h6>
+        <p><em>Paragraphs</em> automatically start a new line</p> 
+
+        <!-- embed jpg below -->
+        <img src="" 
+             alt=""
+             srcset="" 
+             height="" 
+             width=""
+             title="" /> <!--text on hover-->
+            <!-- folow with img attribution -->
+             
+        <!--embed SVG below-->
+        <!--
+        <svg width="300" height="50" xmlns="link to img src, folder format">
+            <image href="file name" height="300" width="50" />
+        </svg>
+        -->
+
+        <figure> <!--makes image a block with added caption-->
+                <img src="lesson-1-me/img/silver-toaster.jpg" alt="That damn toaster" />
+                <figcaption>Sunbeam Toaster</figcaption> <!--caption-->
+        </figure>
+
+        <header> <p>This is page header. Place titles, places, dates, etc.</p> </header>
+        <main> 
+            <p>Main body of page. Lotsa stuff can go here</p>
+        </main>
+            <article>
+                <p>You can further break it up with an <em>article</em> which can be inside the main body.</p>
+            </article>
+            <aside>
+                <p>You can also use an <em>aside</em> to add more secondary information</p>
+            </aside>
+        <footer>
+            <p>
+                Finally, you can use a <em>footer</em> to add sources and other information. <small><em>Small</em> text can be useful here too</small>
+            </p>
+        </footer>
+
+        <!-----------------------------------------------------------------------------forms-->
+        <!-- <input type="text" value="by default this element is filled with this text" /> -->
+         <!-- <label for="testlabel">Name (4 to 8 characters):</label>
+         <input type="text"
+                id="testlabel"
+                name="testlabel"
+                required
+                minlength="4"
+                maxlength="8"
+                size="10"> -->
+        <!--action is the url where the form data should be sent-->
+        <!--method is the type of transer, get or post-->
+        <form action="/my-handling-form-page" method="post">
+            <p><!--name-->
+                <label for="name">Name:</label> 
+                <input type="text" id="name" name="user_name" />
+            </p>
+            <p><!--email-->
+                <label for="mail">Email:</label>
+                <input type="email" id="mail" name="user_email" />
+            </p>
+            <p><!--message-->
+                <label for="msg">Message:</label>
+                <textarea id="msg" name="user_message"></textarea>
+            </p>
+            <!--button, submit-->
+            <p class="button">
+                <button type="submit">Send your message</button>
+            </p>
+        </form>   <!-----------------------------------------------------------forms, buttons-->
+                <!--
+                    -A submit button sends form's data to web page defined by the action attribute of the <form> element
+                    -A reset button resets all the form widgets to their default value immediately. this is considered bad practice, avoid unless needed
+                    -A button button does nothing! amazingly useful for custom buttons — define chosen functions w JavaScript
+                -->            
+
+        <!-------------------------------------------------------------------paragraphs-->
+        <p> 
+            <small> </small> <!--makes p small, used inside p-->
+        </p>
+        <p>  
+            <time datetime="2001-01-18 04:20:13:37"> </time> <!--timestamp, used inside p-->
+        </p>
+        <p> <!--emphasis, italics-->
+            <em> This is emphasis, screenreaders will read with emphasis</em> 
+                <i>Italics only effects typeface and gives no context.</i> <!--italics-->
+        </p>
+
+        <p><!--strong, bold-->
+            <strong>Strong will make bold text that screenreaders read correctly.</strong> 
+                <b>Bold only effects typeface and gives no context.</b> 
+        </p>
+        <p><!--cite, around title, italics-->
+            <cite>This is a citation.</cite> 
+        </p><!--addresses author, building, company, etc-->
+            <address>by More Z. Bowls | morebowls420@gmail.com</address> 
+        <p><!--quote-->
+            <q>This makes a quote with correct markings</q> 
+        </p>
+        <p><!--abbreviation, shows on mouse hover-->
+            <abbr title="BL2">Borderlands 2</abbr>
+        </p>
+        <p> <!--definition, italics-->
+            <dfn>This is a definition</dfn>
+        </p>
+        <p><!--hyperlinks-->
+            <a href="link goes here">hyperlink</a> 
+        </p> 
+        <p><!--delete, strikesthrough-->
+            <del>cattle rustlers</del>
+        </p>
+        <p><!--insert, underlined-->
+            <ins>cowboys</ins> 
+        </p>
+        <p><!--code format on page-->
+            <code>places code directly from html; </code>
+        </p>
+             <!--highlights text-->
+        <p>
+            <mark>Highlighter</mark>
+        </p>
+            <br> </br> <!--linebreak-->
+            <p></p>
+            
+            <p><!--no meaning, use to apply attributes-->
+                <span>Span has no meaning. use to apply attributes. The following line will be read in French by screenreaders.</span> 
+                <span lang="fr">Jeux ne parle francais.</span>
+            </p>
+            <p>
+                <pre>Keeps format of text from IDE</pre>
+            </p>
+
+            <blockquote cite="blahblahblah"> <!--blocks quote-->
+                    Lava's rising, get to high ground! 
+                    <!--for footnotes-->
+                    <sub> <a href=" ">1</a> </sub> <!--subscript-->
+                    <sup> <a href=" ">2</a> </sup> <!--superscript-->
+            </blockquote>
+
+            <p class="warrior">Borderlands 2 Warrior Drops</p>
+            <ul> <!--unordered list, does not need to be in p-->
+                <li>Conference Call</li>
+                <li>Volcano</li>
+                <li>Flakker</li>
+            </ul>
+
+
+        </p>
+
+        <script> //-----------------------------------------------------------------------------javascripts
+            //JS comments are slash-slash and star-slash
+            alert(" ");
+        </script>
+
+    </body>
+</html>
+
+<!--
+USEFUL SHORTCUTS
+alt-z -- wraps code
+ctrl-/ -- comment/uncomment
+
+ctrl-s -- save
+ctrl-space -- code suggestions
+ctrl-shift-up/down -- move line up/down
+ctrl-d -- duplicate line
+ctrl-f -- find
+ctrl-h -- find and replace
+ctrl-bckspc -- delete word backwards
+ctrl-del -- delete word forwards
+ctrl-k z -- enable zen mode
+ctrl-b -- toggle sidebar
+esc esc -- exit zen mode
+commit check
+-->
