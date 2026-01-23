@@ -60,6 +60,7 @@ h4 {
     font-family: "Archivo Narrow", sans-serif;
     font-weight: bold;
     font-size: 14px;
+    margin: 5% 0 5% 0;
 }
 /* first paragraph has no indent */
 p:first-of-type {
