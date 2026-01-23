@@ -1,3 +1,5 @@
+/* This document validates as CSS level 3 + SVG via https://jigsaw.w3.org/css-validator/ */
+
 /* Font Imports
 -------------------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Staatliches&family=Sulphur+Point:wght@300;400;700&display=swap');
@@ -41,15 +43,10 @@ h2, h2 + p {
     font-family: "Staatliches", sans-serif;
     text-transform: uppercase;
     font-weight: normal;
-    margin: 2%, 0, 2%, 0;
+    margin: 1% 0 1% 0;
 }
 h2 {
-    /* scales for various browsers*/
-    -webkit-transform:scale(0.475, 1); /* Safari and Chrome */
-    -moz-transform:scale(0.475, 1); /* Firefox */
-    -ms-transform:scale(0.475, 1); /* IE 9 */
-    -o-transform:scale(0.475, 1); /* Opera */
-    transform:scale(0.475, 1); /* W3C */
+    transform:scale(0.475, 1);
     margin: 0;
     text-align: center;
     font-size: 64px;
@@ -90,8 +87,7 @@ p {
     margin-block-start: 0;
     margin-block-end: 0;
     font-kerning: normal;
-    letter-spacing: 0.25px; */
-    word-spacing: 0.25px;
+    letter-spacing: 0.25px; 
 }
 
 /* Multi-column layout
