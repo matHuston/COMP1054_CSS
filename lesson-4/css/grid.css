@@ -3,7 +3,7 @@
 html {
 	box-sizing: border-box;
 }
-*, *:before, *:after {
+*, *::before, *::after {
 	box-sizing: inherit;
 }
 
@@ -16,28 +16,31 @@ body {
 	background: #FCC;
 	width: 80%;
 	margin: 0 auto;
-	/* STEP 1: Set the container to display: grid; */
-	
-	/* STEP 7: Plot out the grid-template-areas */
-	
-	/* STEP 8: Control the width of the grid rows */
-	
-	/* STEP 9: Control the width of the grid columns (try the fr unit) */
-	
-	/* STEP 10b: Set the grid-gap */
-	
+	/* set the container to display: grid; */
+	display: grid;
+	/* after that you can assign names to each element of the CSS with the grid-area: rule, come up with a concise and easy to read name for each so that the grid-template-areas rule is easy to read for ease of access*/
+	/* grid-template-areas: rule lets you set the layout of each html element however you want */
+	grid-template-areas:
+		 "header header advert" /* we want the header to span across all three columns */
+		 "subnav content advert" /* the nav, section, and aside will sit side by side in the second row */
+		 "subnav footer footer" /* we want the footer to span across all three columns as well */
+	;
+	/* control the height of the grid rows */
+	grid-template-rows: 150px auto 100px; /* the header will be 150px tall, the footer will be 100px tall and the content row will take up the remaining space */
+	/* control the width of the grid columns */ 
+	/* use fr (fractional) units to make sure that your grid is responsive and don't spill over top of the main container */
+	grid-template-columns: 1fr 3fr 1fr;
+	/* set the grid-gap (now just gap:) to create "gaps" or "gutters" between each element on the page */
+	gap: 1rem;
 }
 
 header {
 	border: 5px dotted blue;
 	background: #CCF;
-	/* STEP 2: Identify the header as a grid-area */
-	
-	/* STEP 11a: Fix the <header> - set display: flex; to have the <h1> and the <nav> sit beside each other */
-	
-	/* STEP 11b: Set them at either end of the <header> with justify-content: space-between; */
-
-	/* What do you think? Which of the three methods do you think was the most appropriate for the "Holy Grail" layout? */
+	grid-area: header; /* setting grid-area */
+	/* you can create a flexbox inside of a grid container and manipulate it like normal, super useful */
+	display: flex;
+	justify-content: space-between;
 }
 
 header nav ul {
@@ -52,29 +55,25 @@ header nav ul li {
 #container > nav {
 	border: 5px dotted green;
 	background: #CFC;
-	/* STEP 3: Identify the nav as a grid-area */
-	
+	grid-area: subnav; /* setting grid-area */
 }
 
 section {
 	border: 5px dotted darkorange;
 	background: #FC9;
-	/* STEP 4: Identify the section as a grid-area */
-	
+	grid-area: content; /* setting grid-area */
 }
 
 aside {
 	border: 5px dotted purple;
 	background: #C9C;
-	/* STEP 5: Identify the aside as a grid-area */
-	
+	grid-area: advert; /* setting grid-area */
 }
 
 footer {
 	border: 5px dotted orange;
 	background: #FF9;
-	/* STEP 6: Identify the footer as a grid-area */
-	
+	grid-area: footer; /* setting grid-area */
 }
 
 header,
@@ -82,6 +81,6 @@ header,
 #container > section,
 #container > aside,
 footer {
-    /* STEP 10a: add some padding to the main layout containers to give the text some room to breathe - see the effect in the browser, then comment this out and head up to the #container rule for an alternative */
-    
+    /* padding to the main layout containers to give the text some room to breathe */
+    padding: 1rem; /* padding is based on text so try and use a typographic unit like rem or em instead of px for better scalability and accessibility */
 }
