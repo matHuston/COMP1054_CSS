@@ -24,6 +24,8 @@ html {
 body {
     /* background-color: black; */
 }
+
+/* had to make a background like this to have the filter:blur() */
 body > span > img {
     position: fixed;
     top: 0;
@@ -38,16 +40,19 @@ body > span > img {
 main{
     /* pink gradient at bottom */
     background-image: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.0), #c0099bad);
-    color: white; 
+    color: whitesmoke; 
 }
-
+aside{
+    margin-left: 2rem;
+}
 aside > h2, aside > h3 {
     font-family: Rudelsberg, cursive;
+    text-align: left;
 }
-aside p, time {
+aside p, aside i, address, q {
   font-family: SpaceMono, system-ui;
+  text-align: left;
 }
-
 aside > img {
     max-width: 100%;
     height: auto;
@@ -118,16 +123,16 @@ img[src="assets/brakence-VFT.webp"]:hover {
     animation: pulseimg 8s infinite;
     transition: filter 1s ease;
 }
-/* continuing my self-learning of keyframes from last semester, wrote this one with help from w3schools */
+/* continuing my self-learning of keyframes from last semester - w3schools https://www.w3schools.com/cssref/atrule_keyframes.php */
 @keyframes pulsetext {
-    0% {transform: scale(0.90);
+    0% {transform: scale(0.85);
         text-shadow: 0px 4px 2px #c0099b;
     }
     50% {transform: scale(1);
         text-shadow: 0px 6px 6px #c0099b;
         word-spacing: -6px;
     }
-    100% {transform: scale(0.90);
+    100% {transform: scale(0.85);
         text-shadow: 0px 4px 2px #c0099b;
     }
 }
@@ -139,22 +144,22 @@ img[src="assets/brakence-VFT.webp"]:hover {
 }
 
 /* fem voice rules -------------------------------------------------------------------------------------------- */
-/* word-spacing: -14px property makes my pulsetext animation more visible and helps legibility */
-/* letter-spacing: -3px property is needed for legibility of each word, hard to read if letters are too far apart */
+/* word-spacing: -12px property makes my pulsetext animation more visible and helps legibility */
+/* letter-spacing: -4px property is needed for legibility of each word, hard to read if letters are too far apart */
 /* animaion property needs to be included in each rule to display properly */
 /* fem voice speaking uninterupted */
 p > i > span {
     display: flex;
     justify-content: center;
     animation: pulsetext 10s infinite;
-    word-spacing: -14px; 
+    word-spacing: -12px; 
 }
 /* fem voice speaking behind brakence (inside one flexbox) */
 p > span {
     display: flex;
     justify-content: center;
     animation: pulsetext 10s infinite;
-    word-spacing: -14px;
+    word-spacing: -12px;
     /* nested to add a space between brakence & fem voice's lyrics using escaped unicode char */
     /* not sure if good practice but it works */
      i::before {
@@ -162,14 +167,14 @@ p > span {
         }
 }
 /* fem voice's text styling*/
-i {
+section i {
     color: white;
     text-transform: uppercase;
     font-size: 50px;
     font-family: Rudelsberg-Schmuck, cursive;
     font-style: normal; /* turns off <i> styling so i can use them as selctors without text actually being italicized, need this for the font to display correctly */
-    letter-spacing: -3px;
-    word-spacing: -14px;
+    letter-spacing: -4px;
+    word-spacing: -12px;
     animation: pulsetext 10s infinite;
 }
 /* end lyric rules -------------------------------------------------------------------------------------------- */
