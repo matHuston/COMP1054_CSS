@@ -81,26 +81,27 @@ img {
 
 /* lyric rules -------------------------------------------------------------------------------------------------- */
 p{
-    border: red 1px solid;
+    /* border: green 1px solid; */
+    color: white;
 }
 /* female voice speaking uninterupted */
 p > i > span {
-    border-style: dotted;
-    color:blue;
+    /* border: rgb(0, 170, 255) 1px solid; */
+    color: red;
     display: flex;
     justify-content: flex-end;
 }
-/* female voice speaking behind brakence */
+/* female voice speaking behind brakence (inside one flexbox) */
 p > span {
-    border-style: dotted;
-    color:blue;
+    /* border: rgb(64, 0, 255) 2px dashed; */
+    color:white;
     display: flex;
     justify-content: space-between;
 }
-p > span{
-    color:black;
+/* female voice color forcing */
+i {
+    color: red;
 }
-
 
 footer {
 	border: 5px dotted orange;
