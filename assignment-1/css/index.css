@@ -1,0 +1,97 @@
+@charset "utf-8";
+
+html {
+	box-sizing: border-box;
+}
+*, *::before, *::after {
+	box-sizing: inherit;
+}
+
+body {
+	background-image: url("assets/bg.jpg");
+    object-fit: cover;
+}
+
+div {
+	border: 5px dotted red;
+	background: #FCC;
+	width: 80%;
+	margin: 0 auto;
+	/* set the container to display: grid; */
+	display: grid;
+	/* after that you can assign names to each element of the CSS with the grid-area: rule, come up with a concise and easy to read name for each so that the grid-template-areas rule is easy to read for ease of access*/
+	/* grid-template-areas: rule lets you set the layout of each html element however you want */
+	grid-template-areas:
+		 "header header header" /* we want the header to span across all three columns */
+		 "artwork content content" /* the nav, section, and aside will sit side by side in the second row */
+		 "artist footer footer" /* we want the footer to span across all three columns as well */
+	;
+	/* control the height of the grid rows */
+	grid-template-rows: 150px auto 100px; /* the header will be 150px tall, the footer will be 100px tall and the content row will take up the remaining space */
+	/* control the width of the grid columns */ 
+	/* use fr (fractional) units to make sure that your grid is responsive and don't spill over top of the main container */
+	grid-template-columns: 1fr 2fr;
+	/* set the grid-gap (now just gap:) to create "gaps" or "gutters" between each element on the page */
+	gap: 1rem;
+}
+
+header {
+	border: 5px dotted blue;
+	background: #CCF;
+	grid-area: header; /* setting grid-area */
+	/* you can create a flexbox inside of a grid container and manipulate it like normal, super useful */
+	display: flex;
+	justify-content: center;
+}
+
+/* artist information */
+div > aside {
+	border: 5px dotted green;
+	background: #CFC;
+	grid-area: artist; /* setting grid-area */
+}
+
+/* main page content */
+section {
+	border: 5px dotted darkorange;
+	background: #FC9;
+	grid-area: content; /* setting grid-area */
+}
+
+/* single artwork */
+img {
+    border: 5px dotted purple;
+	background: #C9C;
+	grid-area: artwork; /* setting grid-area */
+    object-fit: cover; /* this makes sure that the image fills the entire grid area without distorting the aspect ratio, it will crop the image if necessary to fit */
+}
+
+footer {
+	border: 5px dotted orange;
+	background: #FF9;
+	grid-area: footer; /* setting grid-area */
+}
+
+/* padding to all text elements*/
+header,
+div > aside,
+div > section,
+footer {
+    /* padding to the main layout containers to give the text some room to breathe */
+    padding: 1rem; /* padding is based on text so try and use a typographic unit like rem or em instead of px for better scalability and accessibility */
+}
+
+/* screen sizes */
+@media screen and (max-width:1700px){
+    img {
+        width: 100%;
+        height: 100%;
+    }
+} 
+
+@media screen and (max-width:1000px){
+    img {
+        width: 100%;
+        height: 100%;
+    }
+} 
