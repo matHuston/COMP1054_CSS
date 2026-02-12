@@ -1,4 +1,13 @@
 @charset "utf-8";
+/* fonts */
+@font-face {
+  font-family: Rudelsberg-Schmuck;
+  src: url(../assets/rudelsberg-schmuck.ttf);
+}
+@font-face {
+  font-family: Rudelsberg;
+  src: url(../assets/rudelsberg-plakatschrift.ttf);
+}
 
 html {
 	box-sizing: border-box;
@@ -21,19 +30,10 @@ body > span > img {
     /* blur effect */
     filter: blur(4px) grayscale(50%);
 }
-/* fonts */
-@font-face {
-  font-family: Rudelsberg-Schmuck;
-  src: url(../assets/rudelsberg-schmuck.ttf);
-}
-@font-face {
-  font-family: Rudelsberg;
-  src: url(../assets/rudelsberg-plakatschrift.ttf);
-}
 
 main{
     /* pink gradient at bottom */
-    background-image: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.375), #c0099bad);
+    background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.375), #c0099bad);
     color: white; 
 }
 
@@ -54,7 +54,7 @@ div {
 	grid-template-columns: 2fr 3fr 2fr;
 	gap: 0.5rem;
     /* bg gradient, darker on left and right sides of page for sidebar legibility*/
-    background-image: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0.375), rgb(0, 0, 0));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.375), rgba(0, 0, 0, 0.8));
 }
 
 header {
@@ -99,48 +99,66 @@ img[src="assets/brakence-VFT.webp"] {
 }
 img[src="assets/brakence-VFT.webp"]:hover {
     filter: grayscale(100%) drop-shadow(4px 4px 4px #c0099b);
+    animation: pulseimg 8s infinite;
     transition: filter 1s ease;
+}
+/* continuing my self-learning of keyframes from last semester, wrote this one with help from w3schools */
+@keyframes pulsetext {
+    0% {transform: scale(0.90);
+        text-shadow: 0px 4px 2px #c0099b;
+    }
+    50% {transform: scale(1);
+        text-shadow: 0px 6px 6px #c0099b;
+        word-spacing: -6px;
+    }
+    100% {transform: scale(0.90);
+        text-shadow: 0px 4px 2px #c0099b;
+    }
+}
+/* needed a different animation for img:hover so that the animation starts cleanly when hovering instead of shrinking first */
+@keyframes pulseimg {
+    0% {transform: scale(1);}
+    50% {transform: scale(0.95);}
+    100% {transform: scale(1);}
 }
 
 /* fem voice rules -------------------------------------------------------------------------------------------- */
+/* word-spacing: -14px property makes my pulsetext animation more visible and helps legibility */
+/* letter-spacing: -3px property is needed for legibility of each word, hard to read if letters are too far apart */
+/* animaion property needs to be included in each rule to display properly */
 /* fem voice speaking uninterupted */
 p > i > span {
     display: flex;
     justify-content: center;
     animation: pulsetext 10s infinite;
+    word-spacing: -14px; 
 }
 /* fem voice speaking behind brakence (inside one flexbox) */
 p > span {
     display: flex;
     justify-content: center;
     animation: pulsetext 10s infinite;
+    word-spacing: -14px;
     /* nested to add a space between brakence & fem voice's lyrics using escaped unicode char */
+    /* not sure if good practice but it works */
      i::before {
             content: "\00a0";
         }
 }
-/* continuing my self-learning of keyframes from last semester, wrote this one with help from w3schools */
-@keyframes pulsetext {
-    0% {transform: scale(0.95);}
-    50% {transform: scale(1);}
-    100% {transform: scale(0.95);}
-}
 /* fem voice's text styling*/
 i {
     color: white;
-    font-size: 50px;
-    font-style: normal; /* turning off <i> styling so i can use them as selctors without text actually being italicized, need this for the font to display correctly */
     text-transform: uppercase;
+    font-size: 50px;
     font-family: Rudelsberg-Schmuck, cursive;
-    letter-spacing: -3px; /* letters need to be closer together for legibility*/
-    text-shadow: 4px 4px #c0099b;
+    font-style: normal; /* turns off <i> styling so i can use them as selctors without text actually being italicized, need this for the font to display correctly */
+    letter-spacing: -3px;
+    word-spacing: -14px;
     animation: pulsetext 10s infinite;
 }
 /* end lyric rules -------------------------------------------------------------------------------------------- */
 
 footer {
-	border: 5px dotted orange;
-	background: #FF9;
 	grid-area: footer; /* setting grid-area */
 }
 
@@ -152,6 +170,7 @@ figure > figcaption,
 footer {
     /* padding to the main layout containers to give the text some room to breathe */
     padding: 1rem; /* padding is based on text so try and use a typographic unit like rem or em instead of px for better scalability and accessibility */
+    text-align: center;
 }
 
 /* screen sizes ------------------------------------------------------------------------------------------------- */
