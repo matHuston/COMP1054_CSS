@@ -10,7 +10,7 @@ html {
 body {
     background-color: black;
 }
-body > span {
+body > span > img {
     position: fixed; /*won't scroll with content */
     top: 0;
     left: 0;
@@ -36,17 +36,17 @@ div {
 	/* after that you can assign names to each element of the CSS with the grid-area: rule, come up with a concise and easy to read name for each so that the grid-template-areas rule is easy to read for ease of access*/
 	/* grid-template-areas: rule lets you set the layout of each html element however you want */
 	grid-template-areas:
-		 "header header" /* we want the header to span across all three columns */
-		 "artwork content" /* the nav, section, and aside will sit side by side in the second row */
-		 "artist footer" /* we want the footer to span across all three columns as well */
+		 "header header header" /* we want the header to span across all three columns */
+		 "artwork content artist" /* the nav, section, and aside will sit side by side in the second row */
+		 "footer footer footer" /* we want the footer to span across all three columns as well */
 	;
 	/* control the height of the grid rows */
 	grid-template-rows: 150px auto 100px; /* the header will be 150px tall, the footer will be 100px tall and the content row will take up the remaining space */
 	/* control the width of the grid columns */ 
 	/* use fr (fractional) units to make sure that your grid is responsive and don't spill over top of the main container */
-	grid-template-columns: 4fr 2fr;
+	grid-template-columns: 2fr 3fr 2fr;
 	/* set the grid-gap (now just gap:) to create "gaps" or "gutters" between each element on the page */
-	gap: 1rem;
+	gap: 2rem;
 }
 
 header {
@@ -73,35 +73,41 @@ section {
 }
 
 /* single artwork */
-img {
-	grid-area: artwork; /* setting grid-area */
-    object-fit: cover; 
-    /* this makes sure that the image fills the entire grid area without distorting the aspect ratio, it will crop the image if necessary to fit */
+figure{
+    background: #CFC;
+    grid-area: artwork; /* setting grid-area */
 }
+img[src="assets/brakence-VFT.webp"] {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
 
 /* lyric rules -------------------------------------------------------------------------------------------------- */
+/* brakence's text color */
 p{
-    /* border: green 1px solid; */
     color: white;
+    text-align: center;
 }
 /* female voice speaking uninterupted */
 p > i > span {
-    /* border: rgb(0, 170, 255) 1px solid; */
-    color: red;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 /* female voice speaking behind brakence (inside one flexbox) */
 p > span {
-    /* border: rgb(64, 0, 255) 2px dashed; */
-    color:white;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    /* nested to add a space between their lyrics using escaped unicode char */
+     i::before { 
+            content: "\00a0";
+        }
 }
-/* female voice color forcing */
+/* female voice's text color*/
 i {
     color: red;
 }
+/* end lyric rules ---------------------------------------------------------------------------------------------- */
 
 footer {
 	border: 5px dotted orange;
@@ -113,19 +119,21 @@ footer {
 header,
 div > aside,
 div > section,
+figure > figcaption,
 footer {
     /* padding to the main layout containers to give the text some room to breathe */
     padding: 1rem; /* padding is based on text so try and use a typographic unit like rem or em instead of px for better scalability and accessibility */
 }
 
 /* screen sizes ------------------------------------------------------------------------------------------------- */
-@media screen and (max-width:3840px){
-    img {
-        width: 100%;
-        height: 100%;
+/* @media screen and (max-width:3840px){
+    img[src="assets/brakence-VFT.webp"] {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
     }
-} 
-
+}  
+/* 
 @media screen and (max-width:1800px){
     img {
         width: 100%;
@@ -138,4 +146,4 @@ footer {
         width: 100%;
         height: 100%;
     }
-} 
+}  */
