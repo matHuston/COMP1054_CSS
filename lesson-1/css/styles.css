@@ -114,7 +114,7 @@ targets elements based on their position in the document structure
         targets the first child or last child of its type within its parent
     td:empty
         targets elements that have no children (including text nodes)
-    *not
+    :not
     targets elements that do not match a list of selectors
         ex. wanna target every list item that does not have class="active"?
         li:not(.active)

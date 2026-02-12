@@ -8,29 +8,43 @@ html {
 }
 
 body {
-	background-image: url("assets/bg.jpg");
-    object-fit: cover;
+    background-color: black;
+}
+body > span {
+    position: fixed; /*won't scroll with content */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* send the bg.jpg to the back layer */
+    /* blur effect */
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}
+main{
+
 }
 
 div {
 	border: 5px dotted red;
-	background: #FCC;
+	/* background: #FCC; */
 	width: 80%;
+    height: fit-content;
 	margin: 0 auto;
 	/* set the container to display: grid; */
 	display: grid;
 	/* after that you can assign names to each element of the CSS with the grid-area: rule, come up with a concise and easy to read name for each so that the grid-template-areas rule is easy to read for ease of access*/
 	/* grid-template-areas: rule lets you set the layout of each html element however you want */
 	grid-template-areas:
-		 "header header header" /* we want the header to span across all three columns */
-		 "artwork content content" /* the nav, section, and aside will sit side by side in the second row */
-		 "artist footer footer" /* we want the footer to span across all three columns as well */
+		 "header header" /* we want the header to span across all three columns */
+		 "artwork content" /* the nav, section, and aside will sit side by side in the second row */
+		 "artist footer" /* we want the footer to span across all three columns as well */
 	;
 	/* control the height of the grid rows */
 	grid-template-rows: 150px auto 100px; /* the header will be 150px tall, the footer will be 100px tall and the content row will take up the remaining space */
 	/* control the width of the grid columns */ 
 	/* use fr (fractional) units to make sure that your grid is responsive and don't spill over top of the main container */
-	grid-template-columns: 1fr 2fr;
+	grid-template-columns: 4fr 2fr;
 	/* set the grid-gap (now just gap:) to create "gaps" or "gutters" between each element on the page */
 	gap: 1rem;
 }
@@ -60,11 +74,33 @@ section {
 
 /* single artwork */
 img {
-    border: 5px dotted purple;
-	background: #C9C;
 	grid-area: artwork; /* setting grid-area */
-    object-fit: cover; /* this makes sure that the image fills the entire grid area without distorting the aspect ratio, it will crop the image if necessary to fit */
+    object-fit: cover; 
+    /* this makes sure that the image fills the entire grid area without distorting the aspect ratio, it will crop the image if necessary to fit */
 }
+
+/* lyric rules -------------------------------------------------------------------------------------------------- */
+p{
+    border: red 1px solid;
+}
+/* female voice speaking uninterupted */
+p > i > span {
+    border-style: dotted;
+    color:blue;
+    display: flex;
+    justify-content: flex-end;
+}
+/* female voice speaking behind brakence */
+p > span {
+    border-style: dotted;
+    color:blue;
+    display: flex;
+    justify-content: space-between;
+}
+p > span{
+    color:black;
+}
+
 
 footer {
 	border: 5px dotted orange;
@@ -81,8 +117,15 @@ footer {
     padding: 1rem; /* padding is based on text so try and use a typographic unit like rem or em instead of px for better scalability and accessibility */
 }
 
-/* screen sizes */
-@media screen and (max-width:1700px){
+/* screen sizes ------------------------------------------------------------------------------------------------- */
+@media screen and (max-width:3840px){
+    img {
+        width: 100%;
+        height: 100%;
+    }
+} 
+
+@media screen and (max-width:1800px){
     img {
         width: 100%;
         height: 100%;
