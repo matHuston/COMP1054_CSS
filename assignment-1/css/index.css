@@ -21,6 +21,16 @@ body > span > img {
     filter: blur(8px);
     -webkit-filter: blur(8px);
 }
+/* fonts */
+@font-face {
+  font-family: Rudelsberg-Schmuck;
+  src: url(../assets/rudelsberg-schmuck.ttf);
+}
+@font-face {
+  font-family: Rudelsberg;
+  src: url(../assets/rudelsberg-initialen.ttf);
+}
+
 main{
 
 }
@@ -33,7 +43,7 @@ div {
 	margin: 0 auto;
 	/* set the container to display: grid; */
 	display: grid;
-	/* after that you can assign names to each element of the CSS with the grid-area: rule, come up with a concise and easy to read name for each so that the grid-template-areas rule is easy to read for ease of access*/
+	/* after that you can assign names to each element of the CSS with the grid-area: rule, come up with a concise and easy to read name for each so that the grid-template-areas rule is easy to read for ease of access */
 	/* grid-template-areas: rule lets you set the layout of each html element however you want */
 	grid-template-areas:
 		 "header header header" /* we want the header to span across all three columns */
@@ -50,12 +60,11 @@ div {
 }
 
 header {
-	border: 5px dotted blue;
-	background: #CCF;
 	grid-area: header; /* setting grid-area */
-	/* you can create a flexbox inside of a grid container and manipulate it like normal, super useful */
 	display: flex;
 	justify-content: center;
+    font-family: Rudelsberg, cursive;
+    color: white;
 }
 
 /* artist information */
@@ -67,9 +76,10 @@ div > aside {
 
 /* main page content */
 section {
-	border: 5px dotted darkorange;
-	background: #FC9;
 	grid-area: content; /* setting grid-area */
+    /* brakence's text styling */
+    color: white; 
+    text-align: center;
 }
 
 /* single artwork */
@@ -78,36 +88,34 @@ figure{
     grid-area: artwork; /* setting grid-area */
 }
 img[src="assets/brakence-VFT.webp"] {
-        max-width: 100%;
-        height: auto;
-        object-fit: cover;
-    }
-
-/* lyric rules -------------------------------------------------------------------------------------------------- */
-/* brakence's text color */
-p{
-    color: white;
-    text-align: center;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
 }
-/* female voice speaking uninterupted */
+
+/* fem voice rules -------------------------------------------------------------------------------------------- */
+/* fem voice speaking uninterupted */
 p > i > span {
     display: flex;
     justify-content: center;
 }
-/* female voice speaking behind brakence (inside one flexbox) */
+/* fem voice speaking behind brakence (inside one flexbox) */
 p > span {
     display: flex;
     justify-content: center;
-    /* nested to add a space between their lyrics using escaped unicode char */
-     i::before { 
+    /* nested to add a space between brakence & fem voice's lyrics using escaped unicode char */
+     i::before {
             content: "\00a0";
         }
 }
-/* female voice's text color*/
+/* fem voice's text styling*/
 i {
-    color: red;
+    color: rgb(255, 255, 255);
+    font-style: normal; /* turning off <i> styling so i can use them as selctors without text actually being italicized */
+    text-transform: uppercase;
+    font-family: Rudelsberg-Schmuck, cursive;
 }
-/* end lyric rules ---------------------------------------------------------------------------------------------- */
+/* end lyric rules -------------------------------------------------------------------------------------------- */
 
 footer {
 	border: 5px dotted orange;
