@@ -12,15 +12,14 @@ body {
     background-color: black;
 }
 body > span > img {
-    position: fixed; /* won't scroll with content */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1; /* send bg.jpg to the back*/
     /* blur effect */
-    filter: blur(4px);
-    -webkit-filter: blur(4px);
+    filter: blur(4px) grayscale(50%);
 }
 /* fonts */
 @font-face {
@@ -33,7 +32,8 @@ body > span > img {
 }
 
 main{
-    background-image: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.375), rgba(172, 47, 120, 0.6));
+    /* pink gradient at bottom */
+    background-image: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.375), #c0099bad);
     color: white; 
 }
 
@@ -53,9 +53,8 @@ div {
 	/* width of the grid columns */ 
 	grid-template-columns: 2fr 3fr 2fr;
 	gap: 0.5rem;
-    /* bg gradient */
+    /* bg gradient, darker on left and right sides of page for sidebar legibility*/
     background-image: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0.375), rgb(0, 0, 0));
-
 }
 
 header {
@@ -74,8 +73,6 @@ h1{
 
 /* artist information */
 div > aside {
-	border: 5px dotted green;
-	background: #CFC;
 	grid-area: artist; /* setting grid-area */
 }
 
@@ -92,7 +89,6 @@ section {
 
 /* single artwork */
 figure{
-    background: #CFC;
     grid-area: artwork; /* setting grid-area */
 }
 img[src="assets/brakence-VFT.webp"] {
@@ -111,25 +107,34 @@ img[src="assets/brakence-VFT.webp"]:hover {
 p > i > span {
     display: flex;
     justify-content: center;
+    animation: pulsetext 10s infinite;
 }
 /* fem voice speaking behind brakence (inside one flexbox) */
 p > span {
     display: flex;
     justify-content: center;
+    animation: pulsetext 10s infinite;
     /* nested to add a space between brakence & fem voice's lyrics using escaped unicode char */
      i::before {
             content: "\00a0";
         }
 }
+/* continuing my self-learning of keyframes from last semester, wrote this one with help from w3schools */
+@keyframes pulsetext {
+    0% {transform: scale(0.95);}
+    50% {transform: scale(1);}
+    100% {transform: scale(0.95);}
+}
 /* fem voice's text styling*/
 i {
-    color: rgb(255, 255, 255);
+    color: white;
     font-size: 50px;
     font-style: normal; /* turning off <i> styling so i can use them as selctors without text actually being italicized, need this for the font to display correctly */
     text-transform: uppercase;
     font-family: Rudelsberg-Schmuck, cursive;
     letter-spacing: -3px; /* letters need to be closer together for legibility*/
     text-shadow: 4px 4px #c0099b;
+    animation: pulsetext 10s infinite;
 }
 /* end lyric rules -------------------------------------------------------------------------------------------- */
 
