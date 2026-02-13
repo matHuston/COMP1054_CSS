@@ -240,7 +240,6 @@ footer {
 header,
 div>aside,
 div>section,
-figure>figcaption,
 footer {
     padding: 1rem;
 }
