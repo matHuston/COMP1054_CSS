@@ -113,6 +113,9 @@ figure{
     grid-area: artwork; /* setting grid-area */
     font-family: SpaceMono, system-ui;
 }
+figure > h2{
+    font-family: Rudelsberg, cursive;;
+}
 img[src="assets/brakence-VFT.webp"] {
     border: black 5px solid;
     max-width: 100%;
