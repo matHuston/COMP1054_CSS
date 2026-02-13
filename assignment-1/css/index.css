@@ -95,10 +95,13 @@ aside {
     margin-left: 2rem;
 }
 
-aside h2,
-h2+h3 {
+h2 {
     font-family: Rudelsberg, cursive;
     text-align: left;
+}
+
+h3 {
+    font-family: SpaceMono, system-ui;
 }
 
 aside p,
@@ -178,11 +181,6 @@ section+section p {
     /* setting grid-area */
     font-family: SpaceMono, system-ui;
     font-size: 16px;
-    text-align: left;
-}
-
-section>h2 {
-    font-family: Rudelsberg, cursive;
     text-align: left;
 }
 
