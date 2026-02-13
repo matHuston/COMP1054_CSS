@@ -111,6 +111,7 @@ section {
 /* single artwork */
 figure{
     grid-area: artwork; /* setting grid-area */
+    font-family: SpaceMono, system-ui;
 }
 img[src="assets/brakence-VFT.webp"] {
     border: black 5px solid;
