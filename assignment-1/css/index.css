@@ -22,11 +22,10 @@ html {
 }
 
 body {
-    /* background-color: black; */
+    background-color: black;
 }
-
-/* had to make a background like this to have the filter:blur() */
-body > span > img {
+/* had to make a background like this to include filter:blur() */
+body span img {
     position: fixed;
     top: 0;
     left: 0;
@@ -45,15 +44,16 @@ main{
 aside{
     margin-left: 2rem;
 }
-aside > h2, aside > h3 {
+aside h2, h2 + h3 {
     font-family: Rudelsberg, cursive;
     text-align: left;
 }
 aside p, aside i, address, q {
   font-family: SpaceMono, system-ui;
+  font-size: 16px;
   text-align: left;
 }
-aside > img {
+aside img {
     max-width: 100%;
     height: auto;
     object-fit: cover;
@@ -66,7 +66,7 @@ div {
 	display: grid;
 	grid-template-areas:
 		 "header header header"
-		 "artist content artwork"
+		 "artist content monologue"
 		 "footer footer footer"
 	;
 	/* height of the grid rows */
@@ -108,13 +108,20 @@ section {
     text-shadow: 6px 6px #000000;
 }
 
-/* single artwork */
-figure{
-    grid-area: artwork; /* setting grid-area */
+/* right side column*/
+section + section, section + section p {
+    grid-area: monologue; /* setting grid-area */
     font-family: SpaceMono, system-ui;
+    font-size: 16px;
+    text-align: left;
 }
-figure > h2{
-    font-family: Rudelsberg, cursive;;
+section > h2{
+    font-family: Rudelsberg, cursive;
+    text-align: left;
+}
+/* single release cover */
+figure{
+    font-family: SpaceMono, system-ui;
 }
 img[src="assets/brakence-VFT.webp"] {
     border: black 5px solid;
