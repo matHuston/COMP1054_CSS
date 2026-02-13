@@ -1,4 +1,5 @@
 @charset "utf-8";
+
 /* fonts */
 /* it was really, really hard to find a commercial-free psychedelic font, but I like the one I ended up with because it gave me the idea to style the fem voice in the backing track of the song in the pulsing psychedelic style that I did */
 @font-face {
@@ -16,16 +17,15 @@
 
 html {
 	box-sizing: border-box;
-    
 }
 *, *::before, *::after {
 	box-sizing: inherit;
 }
-
 body {
+    /* removes white glow around the edge of the background img */
     background-color: black;
 }
-/* had to make a background like this to include filter:blur() */
+/* had to make the background a standard img element to use filter:blur() */
 body span img {
     position: fixed;
     top: 0;
@@ -36,12 +36,46 @@ body span img {
     /* blur effect */
     filter: blur(4px) grayscale(50%);
 }
-
+header {
+	grid-area: header; /* setting grid-area */
+	display: flex;
+	justify-content: center;
+    font-family: Rudelsberg, cursive;
+}
+h1{
+    font-size: 88px;
+    text-shadow: 6px 6px #1f4b38;
+}
+/* bg gradient 1, pink gradient at bottom */
 main{
-    /* pink gradient at bottom */
     background-image: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.0), #c0099bad);
     color: whitesmoke; 
 }
+/* CSS grid layout */
+div {
+	width: 100%;
+    height: fit-content;
+	margin: 0 auto;
+	display: grid;
+	grid-template-areas:
+		 "header header header"
+		 "artist content monologue"
+		 "footer footer footer"
+	;
+	/* height of the grid rows */
+	grid-template-rows: 150px auto 150px;
+	/* width of the grid columns */
+	grid-template-columns: 2fr 3fr 2fr;
+	gap: 0.5rem;
+    /* bg gradient 2, darker on left and right sides of page for side columns legibility*/
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.8));
+}
+
+/* artist information -------------------------------------------------------------------------------------------- */
+div > aside {
+	grid-area: artist; /* setting grid-area */
+}
+/* aside text */
 aside{
     margin-left: 2rem;
 }
@@ -54,87 +88,31 @@ aside p, aside i, address, q {
   font-size: 16px;
   text-align: left;
 }
+/* brakence logo */
 aside img {
     max-width: 100%;
     height: auto;
     object-fit: cover;
 }
 
-div {
-	width: 100%;
-    height: fit-content;
-	margin: 0 auto;
-	display: grid;
-	grid-template-areas:
-		 "header header header"
-		 "artist content monologue"
-		 "footer footer footer"
-	;
-	/* height of the grid rows */
-	grid-template-rows: 150px auto 150px; /* header 150px, footer 100px and content fills the rest */
-	/* width of the grid columns */ 
-	grid-template-columns: 2fr 3fr 2fr;
-	gap: 0.5rem;
-    /* bg gradient, darker on left and right sides of page for sidebar legibility*/
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.375), rgba(0, 0, 0, 0.8));
-}
-
-header {
-	grid-area: header; /* setting grid-area */
-	display: flex;
-	justify-content: center;
-    font-family: Rudelsberg, cursive;
-    /* color: white; */
-}
-h1{
-    font-size: 88px;
-    text-transform: uppercase;
-    letter-spacing: -3px; /* letters need to be closer together for legibility*/
-    text-shadow: 4px 4px #1f4b38;
-}
-
-/* artist information */
-div > aside {
-	grid-area: artist; /* setting grid-area */
-}
-
-/* main page content */
-section {
-	grid-area: content; /* setting grid-area */
-    /* brakence's text styling ------------------------------------------- */
-    font-size: 40px;
-    font-family: Rudelsberg, cursive;
-    /* color: white;  */
-    text-align: center;
-    text-shadow: 6px 6px #000000;
-}
-
-/* right side column*/
-section + section, section + section p {
-    grid-area: monologue; /* setting grid-area */
-    font-family: SpaceMono, system-ui;
-    font-size: 16px;
-    text-align: left;
-}
-section > h2{
-    font-family: Rudelsberg, cursive;
-    text-align: left;
-}
-/* single release cover */
+/* single release cover ------------------------------------------------------------------------------------------ */
 figure{
     font-family: SpaceMono, system-ui;
 }
 img[src="assets/brakence-VFT.webp"] {
-    border: black 5px solid;
+    border:  5px solid;
+    border-radius: 5%;
     max-width: 100%;
     height: auto;
     object-fit: cover;
 }
 img[src="assets/brakence-VFT.webp"]:hover {
-    filter: grayscale(100%) drop-shadow(4px 4px 4px #c0099b);
+    filter: grayscale(100%) drop-shadow(6px 6px 6px #c0099b);
     animation: pulseimg 10s infinite;
     transition: filter 1s ease;
 }
+
+/* main page content --------------------------------------------------------------------------------------------- */
 /* continuing my self-learning of keyframes from last semester - w3schools https://www.w3schools.com/cssref/atrule_keyframes.php */
 @keyframes pulsetext {
     0% {transform: scale(0.85);
@@ -148,48 +126,64 @@ img[src="assets/brakence-VFT.webp"]:hover {
         text-shadow: 0px 4px 2px #c0099b;
     }
 }
-/* needed a different animation for img:hover so that the animation starts cleanly when hovering instead of abruptly shrinking first */
+/* different animation for img:hover so that the animation starts cleanly when hovering instead of abruptly shrinking first */
 @keyframes pulseimg {
     0% {transform: scale(1);}
     50% {transform: scale(0.85);}
     100% {transform: scale(1);}
 }
 
-/* fem voice rules -------------------------------------------------------------------------------------------- */
+/* right side column*/
+section + section, section + section p {
+    grid-area: monologue; /* setting grid-area */
+    font-family: SpaceMono, system-ui;
+    font-size: 16px;
+    text-align: left;
+}
+section > h2{
+    font-family: Rudelsberg, cursive;
+    text-align: left;
+}
+
+/* middle column */
+section {
+	grid-area: content; /* setting grid-area */
+    /* brakence's text styling */
+    font-size: 40px;
+    font-family: Rudelsberg, cursive;
+    text-align: center;
+    text-shadow: 6px 6px #000000;
+}
+
+/* fem voice rules */
 /* word-spacing: -12px property makes my @keyframes pulsetext more visible for legibility */
 /* letter-spacing: -4px property is needed for legibility of each word, hard to read if letters are too far apart */
 /* animaion property needs to be included in each rule to display properly */
+
 /* fem voice speaking uninterupted */
 p > i > span {
     display: flex;
     justify-content: center;
     animation: pulsetext 10s infinite;
-    word-spacing: -12px; 
 }
 /* fem voice speaking behind brakence (inside one flexbox) */
 p > span {
     display: flex;
     justify-content: center;
     animation: pulsetext 10s infinite;
-    word-spacing: -12px;
-    /* nested to add a space between brakence & fem voice's lyrics using escaped unicode char */
-    /* not sure if good practice but it works */
-     i::before {
-            content: "\00a0";
-        }
 }
 /* fem voice's text styling*/
 section i {
-    color: white;
-    text-transform: uppercase;
-    font-size: 50px;
+    color: whitesmoke;
     font-family: Rudelsberg-Schmuck, cursive;
-    font-style: normal; /* turns off <i> styling so i can use them as selctors without text actually being italicized, need this for the font to display correctly */
+    font-size: 50px;
+    font-style: normal; /* turns off <i> styling for use as selctors without being italicized, needed for font to display correctly */
+    text-transform: uppercase;
     letter-spacing: -4px;
     word-spacing: -12px;
     animation: pulsetext 10s infinite;
 }
-/* end lyric rules -------------------------------------------------------------------------------------------- */
+/* end main page content ----------------------------------------------------------------------------------------- */
 
 footer {
 	grid-area: footer; /* setting grid-area */
