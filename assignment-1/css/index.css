@@ -1,5 +1,6 @@
 @charset "utf-8";
 /* fonts */
+/* it was really, really hard to find a commercial-free psychedelic font, but I like the one I ended up with because it gave me the idea to style the fem voice in the backing track of the song in the pulsing psychedelic style that I did */
 @font-face {
   font-family: Rudelsberg-Schmuck;
   src: url(../assets/rudelsberg-schmuck.ttf);
@@ -131,7 +132,7 @@ img[src="assets/brakence-VFT.webp"] {
 }
 img[src="assets/brakence-VFT.webp"]:hover {
     filter: grayscale(100%) drop-shadow(4px 4px 4px #c0099b);
-    animation: pulseimg 8s infinite;
+    animation: pulseimg 10s infinite;
     transition: filter 1s ease;
 }
 /* continuing my self-learning of keyframes from last semester - w3schools https://www.w3schools.com/cssref/atrule_keyframes.php */
@@ -147,15 +148,15 @@ img[src="assets/brakence-VFT.webp"]:hover {
         text-shadow: 0px 4px 2px #c0099b;
     }
 }
-/* needed a different animation for img:hover so that the animation starts cleanly when hovering instead of shrinking first */
+/* needed a different animation for img:hover so that the animation starts cleanly when hovering instead of abruptly shrinking first */
 @keyframes pulseimg {
     0% {transform: scale(1);}
-    50% {transform: scale(0.95);}
+    50% {transform: scale(0.85);}
     100% {transform: scale(1);}
 }
 
 /* fem voice rules -------------------------------------------------------------------------------------------- */
-/* word-spacing: -12px property makes my pulsetext animation more visible and helps legibility */
+/* word-spacing: -12px property makes my @keyframes pulsetext more visible for legibility */
 /* letter-spacing: -4px property is needed for legibility of each word, hard to read if letters are too far apart */
 /* animaion property needs to be included in each rule to display properly */
 /* fem voice speaking uninterupted */
@@ -193,6 +194,7 @@ section i {
 footer {
 	grid-area: footer; /* setting grid-area */
     font-family: SpaceMono, system-ui;
+    text-align: left;
 }
 
 /* padding to all text elements*/
@@ -201,29 +203,5 @@ div > aside,
 div > section,
 figure > figcaption,
 footer {
-    /* padding to the main layout containers to give the text some room to breathe */
     padding: 1rem;
 }
-
-/* screen sizes ------------------------------------------------------------------------------------------------- */
-/* @media screen and (max-width:3840px){
-    img[src="assets/brakence-VFT.webp"] {
-        max-width: 100%;
-        height: auto;
-        object-fit: cover;
-    }
-}  
-/* 
-@media screen and (max-width:1800px){
-    img {
-        width: 100%;
-        height: 100%;
-    }
-} 
-
-@media screen and (max-width:1000px){
-    img {
-        width: 100%;
-        height: 100%;
-    }
-}  */
