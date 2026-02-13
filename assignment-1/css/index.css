@@ -3,28 +3,35 @@
 /* fonts */
 /* it was really, really hard to find a commercial-free psychedelic font, but I like the one I ended up with because it gave me the idea to style the fem voice in the backing track of the song in the pulsing psychedelic style that I did */
 @font-face {
-  font-family: Rudelsberg-Schmuck;
-  src: url(../assets/rudelsberg-schmuck.ttf);
+    font-family: Rudelsberg-Schmuck;
+    src: url(../assets/rudelsberg-schmuck.ttf);
 }
+
 @font-face {
-  font-family: Rudelsberg;
-  src: url(../assets/rudelsberg-plakatschrift.ttf);
+    font-family: Rudelsberg;
+    src: url(../assets/rudelsberg-plakatschrift.ttf);
 }
+
 @font-face {
-  font-family: SpaceMono-Regular;
-  src: url(../assets/SpaceMono-Regular.ttf);
+    font-family: SpaceMono-Regular;
+    src: url(../assets/SpaceMono-Regular.ttf);
 }
 
 html {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
-*, *::before, *::after {
-	box-sizing: inherit;
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
 }
+
 body {
     /* removes white glow around the edge of the background img */
     background-color: black;
 }
+
 /* had to make the background a standard img element to use filter:blur() */
 body span img {
     position: fixed;
@@ -32,62 +39,77 @@ body span img {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* send bg.jpg to the back*/
+    z-index: -1;
+    /* send bg.jpg to the back*/
     /* blur effect */
     filter: blur(4px) grayscale(50%);
 }
+
 header {
-	grid-area: header; /* setting grid-area */
-	display: flex;
-	justify-content: center;
+    grid-area: header;
+    /* setting grid-area */
+    display: flex;
+    justify-content: center;
     font-family: Rudelsberg, cursive;
 }
-h1{
+
+h1 {
     font-size: 88px;
     text-shadow: 6px 6px #1f4b38;
 }
+
 /* bg gradient 1, pink gradient at bottom */
-main{
-    background-image: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.0), #c0099bad);
-    color: whitesmoke; 
+main {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.0), #c0099bad);
+    color: whitesmoke;
 }
+
 /* CSS grid layout */
 div {
-	width: 100%;
+    width: 100%;
     height: fit-content;
-	margin: 0 auto;
-	display: grid;
-	grid-template-areas:
-		 "header header header"
-		 "artist content monologue"
-		 "footer footer footer"
-	;
-	/* height of the grid rows */
-	grid-template-rows: 150px auto 150px;
-	/* width of the grid columns */
-	grid-template-columns: 2fr 3fr 2fr;
-	gap: 0.5rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "artist content monologue"
+        "footer footer footer"
+    ;
+    /* height of the grid rows */
+    grid-template-rows: 150px auto 150px;
+    /* width of the grid columns */
+    grid-template-columns: 2fr 3fr 2fr;
+    gap: 0.5rem;
     /* bg gradient 2, darker on left and right sides of page for side columns legibility*/
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.8));
 }
 
 /* artist information -------------------------------------------------------------------------------------------- */
-div > aside {
-	grid-area: artist; /* setting grid-area */
+div>aside {
+    grid-area: artist;
+    /* setting grid-area */
 }
+
 /* aside text */
-aside{
+aside {
     margin-left: 2rem;
 }
-aside h2, h2 + h3 {
+
+aside h2,
+h2+h3 {
     font-family: Rudelsberg, cursive;
     text-align: left;
 }
-aside p, aside i, address, q {
-  font-family: SpaceMono, system-ui;
-  font-size: 16px;
-  text-align: left;
+
+aside p,
+aside i,
+address,
+q {
+    font-family: SpaceMono, system-ui;
+    font-size: 16px;
+    text-align: left;
 }
+
 /* brakence logo */
 aside img {
     max-width: 100%;
@@ -96,16 +118,18 @@ aside img {
 }
 
 /* single release cover ------------------------------------------------------------------------------------------ */
-figure{
+figure {
     font-family: SpaceMono, system-ui;
 }
+
 img[src="assets/brakence-VFT.webp"] {
-    border:  5px solid;
+    border: 5px solid;
     border-radius: 5%;
     max-width: 100%;
     height: auto;
     object-fit: cover;
 }
+
 img[src="assets/brakence-VFT.webp"]:hover {
     filter: grayscale(100%) drop-shadow(6px 6px 6px #c0099b);
     animation: pulseimg 10s infinite;
@@ -115,39 +139,57 @@ img[src="assets/brakence-VFT.webp"]:hover {
 /* main page content --------------------------------------------------------------------------------------------- */
 /* continuing my self-learning of keyframes from last semester - w3schools https://www.w3schools.com/cssref/atrule_keyframes.php */
 @keyframes pulsetext {
-    0% {transform: scale(0.85);
+    0% {
+        transform: scale(0.85);
         text-shadow: 0px 4px 2px #c0099b;
     }
-    50% {transform: scale(1);
+
+    50% {
+        transform: scale(1);
         text-shadow: 0px 6px 6px #c0099b;
         word-spacing: -6px;
     }
-    100% {transform: scale(0.85);
+
+    100% {
+        transform: scale(0.85);
         text-shadow: 0px 4px 2px #c0099b;
     }
 }
+
 /* different animation for img:hover so that the animation starts cleanly when hovering instead of abruptly shrinking first */
 @keyframes pulseimg {
-    0% {transform: scale(1);}
-    50% {transform: scale(0.85);}
-    100% {transform: scale(1);}
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.85);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 /* right side column*/
-section + section, section + section p {
-    grid-area: monologue; /* setting grid-area */
+section+section,
+section+section p {
+    grid-area: monologue;
+    /* setting grid-area */
     font-family: SpaceMono, system-ui;
     font-size: 16px;
     text-align: left;
 }
-section > h2{
+
+section>h2 {
     font-family: Rudelsberg, cursive;
     text-align: left;
 }
 
 /* middle column */
 section {
-	grid-area: content; /* setting grid-area */
+    grid-area: content;
+    /* setting grid-area */
     /* brakence's text styling */
     font-size: 40px;
     font-family: Rudelsberg, cursive;
@@ -161,41 +203,46 @@ section {
 /* animaion property needs to be included in each rule to display properly */
 
 /* fem voice speaking uninterupted */
-p > i > span {
+p>i>span {
     display: flex;
     justify-content: center;
     animation: pulsetext 10s infinite;
 }
+
 /* fem voice speaking behind brakence (inside one flexbox) */
-p > span {
+p>span {
     display: flex;
     justify-content: center;
     animation: pulsetext 10s infinite;
 }
+
 /* fem voice's text styling*/
 section i {
     color: whitesmoke;
     font-family: Rudelsberg-Schmuck, cursive;
     font-size: 50px;
-    font-style: normal; /* turns off <i> styling for use as selctors without being italicized, needed for font to display correctly */
+    font-style: normal;
+    /* turns off <i> styling for use as selctors without being italicized, needed for font to display correctly */
     text-transform: uppercase;
     letter-spacing: -4px;
     word-spacing: -12px;
     animation: pulsetext 10s infinite;
 }
+
 /* end main page content ----------------------------------------------------------------------------------------- */
 
 footer {
-	grid-area: footer; /* setting grid-area */
+    grid-area: footer;
+    /* setting grid-area */
     font-family: SpaceMono, system-ui;
     text-align: left;
 }
 
 /* padding to all text elements*/
 header,
-div > aside,
-div > section,
-figure > figcaption,
+div>aside,
+div>section,
+figure>figcaption,
 footer {
     padding: 1rem;
 }
