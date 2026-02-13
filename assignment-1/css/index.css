@@ -70,7 +70,7 @@ div {
 		 "footer footer footer"
 	;
 	/* height of the grid rows */
-	grid-template-rows: 150px auto 100px; /* header 150px, footer 100px and content fills the rest */
+	grid-template-rows: 150px auto 150px; /* header 150px, footer 100px and content fills the rest */
 	/* width of the grid columns */ 
 	grid-template-columns: 2fr 3fr 2fr;
 	gap: 0.5rem;
@@ -192,6 +192,7 @@ section i {
 
 footer {
 	grid-area: footer; /* setting grid-area */
+    font-family: SpaceMono, system-ui;
 }
 
 /* padding to all text elements*/
@@ -201,8 +202,7 @@ div > section,
 figure > figcaption,
 footer {
     /* padding to the main layout containers to give the text some room to breathe */
-    padding: 1rem; /* padding is based on text so try and use a typographic unit like rem or em instead of px for better scalability and accessibility */
-    text-align: center;
+    padding: 1rem;
 }
 
 /* screen sizes ------------------------------------------------------------------------------------------------- */
